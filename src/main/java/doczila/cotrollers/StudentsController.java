@@ -21,11 +21,11 @@ public class StudentsController {
     }
 
     @GetMapping("/addStudent")
-    public String addStudent(@RequestParam(required = false) String studentName,
-                             @RequestParam(required = false) String studentSurname,
-                             @RequestParam(required = false) String studentLastname,
-                             @RequestParam(required = false) String studentBirthday,
-                             @RequestParam(required = false) String studentGroup,
+    public String addStudent(@RequestParam String studentName,
+                             @RequestParam String studentSurname,
+                             @RequestParam String studentLastname,
+                             @RequestParam String studentBirthday,
+                             @RequestParam String studentGroup,
                              Model model) {
         Students student = new Students();
         student.setName(studentName);
@@ -34,6 +34,19 @@ public class StudentsController {
         student.setBirthday(studentBirthday);
         student.setGroup(studentGroup);
         studentsService.insertStudent(student);
+        model.addAttribute("students", studentsService.getAllStudents());
+        return "index";
+    }
+
+    @GetMapping("/deleteStudent")
+    public String deleteStudent(@RequestParam int studentId, Model model) {
+        studentsService.deleteStudent(studentId);
+        model.addAttribute("students", studentsService.getAllStudents());
+        return "index";
+    }
+
+    @GetMapping("/showStudents")
+    public String showStudents(Model model) {
         model.addAttribute("students", studentsService.getAllStudents());
         return "index";
     }

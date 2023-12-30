@@ -62,18 +62,16 @@ public class StudentsService {
                     + student.getBirthday() + "', '"
                     + student.getGroup() + "')";
             statement.executeQuery(sql);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ignored) {
         }
     }
 
     public void deleteStudent(int id) {
         try {
             Statement statement = connection.createStatement();
-            String SQL = "DELETE FROM Students WHERE id=" + id;
+            String SQL = "delete from students where id=" + id;
             statement.executeQuery(SQL);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ignored) {
         }
     }
 }
