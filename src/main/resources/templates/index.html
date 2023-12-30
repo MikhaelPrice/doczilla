@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Студенты</title>
+</head>
+
+<script>
+
+    function showStudentList() {
+      const studentList = document.getElementById('student-list');
+      studentList.innerHTML = '';
+      student.forEach(student => {
+        const li = document.createElement('li');
+        li.textContent = `${student.id}: ${student.name}`;
+        studentList.appendChild(li);
+      });
+    }
+
+
+</script>
+
+<body>
+<h2 align="center">Список студентов</h2>
+<ul id="student-list"></ul>
+<form action="/addStudent" method="get">
+    <div>
+        <input type="text" id="name" name="studentName" placeholder="Имя студента"><br>
+        <input type="text" id="surname" name="studentSurname" placeholder="Фамилия студента"><br>
+        <input type="text" id="lastname" name="studentLastname" placeholder="Отчество студента"><br>
+        <input type="date" id="birthday" name="studentBirthday" placeholder="Дата рождения студента"><br>
+        <input type="text" id="group" name="studentGroup" placeholder="Группа студента"><br>
+        <button type="submit">Добавить студента</button>
+        <br><br>
+    </div>
+</form>
+<form action="/deleteStudent" method="get">
+    <input type="text" id="id" name="studentId" placeholder="id студента"><br>
+    <button type="submit">Удалить студента</button>
+    <br><br>
+</form>
+<form action="/showStudents" method="get">
+    <button type="submit" onclick="showStudentList()">Показать всех студентов</button>
+    <br>
+    <output name="students"></output>
+</form>
+</body>
+</html>

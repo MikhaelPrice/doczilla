@@ -4,5 +4,5 @@ create table Students(
     surname varchar not null ,
     lastname varchar not null,
     birthday date,
-    group_number int
+    "group" varchar
 )

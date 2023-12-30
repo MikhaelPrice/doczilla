@@ -1,11 +1,9 @@
-package doczila.task2.entity;
+package doczila.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -16,6 +14,6 @@ public class Students {
     private String name;
     private String surname;
     private String lastname;
-    private Date birthday;
-    private int groupNumber;
+    private String birthday;
+    private String group;
 }

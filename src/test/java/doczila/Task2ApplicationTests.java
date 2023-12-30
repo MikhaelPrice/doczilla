@@ -1,4 +1,4 @@
-package doczila.task2;
+package doczila;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

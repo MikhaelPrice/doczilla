@@ -1,4 +1,4 @@
-package doczila.task2;
+package doczila;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

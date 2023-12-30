@@ -1,14 +1,16 @@
-package doczila.task2.service;
+package doczila.service;
 
-import doczila.task2.entity.Students;
+import doczila.entity.Students;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class StudentsService {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/first_db";
+    private static final String URL = "jdbc:postgresql://localhost:5432/doczilla";
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "postgres";
 
@@ -40,8 +42,8 @@ public class StudentsService {
                 student.setName(resultSet.getString("name"));
                 student.setSurname(resultSet.getString("surname"));
                 student.setLastname(resultSet.getString("lastname"));
-                student.setBirthday(resultSet.getDate("birthday"));
-                student.setGroupNumber(resultSet.getInt("group_number"));
+                student.setBirthday(resultSet.getString("birthday"));
+                student.setGroup(resultSet.getString("group"));
                 students.add(student);
             }
         } catch (SQLException throwables) {
@@ -53,14 +55,13 @@ public class StudentsService {
     public void insertStudent(Students student) {
         try {
             Statement statement = connection.createStatement();
-            String SQL = "INSERT INTO Students name, surname, lastname," +
-                    " birthday, group_number VALUES('"
-                    + student.getName() + "',"
-                    + student.getSurname() + ",'"
-                    + student.getLastname() + ",'"
-                    + student.getBirthday() + ",'"
-                    + student.getGroupNumber() + "')";
-            statement.executeQuery(SQL);
+            String sql = "insert into students (name, surname, lastname, birthday, \"group\") values ('"
+                    + student.getName() + "', '"
+                    + student.getSurname() + "', '"
+                    + student.getLastname() + "', '"
+                    + student.getBirthday() + "', '"
+                    + student.getGroup() + "')";
+            statement.executeQuery(sql);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
